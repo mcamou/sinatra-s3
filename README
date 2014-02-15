@@ -39,3 +39,14 @@ with the default username admin and password pass@word1.
 Once running log in with the username admin and password pass@word1 
 via the control center at http://127.0.0.1:6060/control/.  Make sure
 to change your password!
+
+This version of sinatra-s3 uses Amazon's new subdomain-based API. That
+means that buckets are treated as virtual hosts inside a domain, so
+bucket test within the host localhost will be accessed as test.localhost.
+That means that you need to either edit your DNS or your OS hosts file to
+add hosts for each bucket you want to access. In UNIX-based systems, edit
+/etc/hosts and add the hostname(s) at the end of the localhost entry:
+
+127.0.0.1 localhost bucket1.localhost bucket2.localhost
+
+You also need to use up-to-date versions of the Amazon client APIs.
